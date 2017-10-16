@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #######################################################
 # AUTHOR  : Ashkan Kiaie-Sandjie                      #
 # SUMMARY : Contain the logic to calibrate the camera #
@@ -9,15 +11,18 @@ import argparse
 import cv2
 import sys
 
+
 def print_distance(real_size, focal, size):
     distance = real_size * focal / size
     print(distance)
     return distance
 
+
 def print_focal(size, distance, real_size):
     focal = size * distance / real_size
     print(focal)
     return focal
+
 
 def get_size_of_light(keypoints, bin_image, source_image):
     min_x = 5000
@@ -31,34 +36,35 @@ def get_size_of_light(keypoints, bin_image, source_image):
             y_down = 0
             y_up = 0
             height, width, chan = source_image.shape
-            while (center_x - x_left > 0 and
-               bin_image[center_y, center_x - x_left] == 255):
+            while (center_x - x_left > 0
+                   and bin_image[center_y, center_x - x_left] == 255):
                 source_image[center_y, center_x - x_left] = [32, 124, 63]
                 x_left += 1
-            while (center_x + x_right < width and
-               bin_image[center_y, center_x + x_right] == 255):
+            while (center_x + x_right < width
+                   and bin_image[center_y, center_x + x_right] == 255):
                 source_image[center_y, center_x + x_right] = [32, 124, 63]
                 x_right += 1
 
-            while (center_y - y_up > 0 and
-               bin_image[center_y - y_up, center_x] == 255):
+            while (center_y - y_up > 0
+                   and bin_image[center_y - y_up, center_x] == 255):
                 source_image[center_y - y_up, center_x] = [32, 124, 63]
                 y_up += 1
-            while (center_y + y_down < height and
-               bin_image[center_y + y_down, center_x] == 255):
+            while (center_y + y_down < height
+                   and bin_image[center_y + y_down, center_x] == 255):
                 source_image[center_y + y_down, center_x] = [32, 124, 63]
                 y_down += 1
             size = (x_left + x_right + y_down + y_up - 2) / 2.0
     print(size)
     return size
 
+
 def get_keypoints_image(keypoints, source_image):
     image_keypoints = cv2.drawKeypoints(
-        source_image, keypoints, np.array([]),
-        (0,0,255),
-        cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+        source_image, keypoints,
+        np.array([]), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 
     return image_keypoints
+
 
 def get_keypoints(source_image):
     params = cv2.SimpleBlobDetector_Params()
@@ -79,6 +85,7 @@ def get_keypoints(source_image):
     keypoints = detector.detect(source_image)
     return keypoints
 
+
 def binarize_image(source_image):
     # load the image, clone it for output, and then convert it to grayscale
     copy_image = source_image.copy()
@@ -86,9 +93,11 @@ def binarize_image(source_image):
     ret, binarized_image = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
     return binarized_image
 
+
 def show_and_wait(image):
     cv2.imshow("output", image)
     cv2.waitKey(0)
+
 
 def process_size(image_path):
     name = image_path
@@ -104,6 +113,7 @@ def process_size(image_path):
     #cv2.imwrite("/tmp/" + image_path, key_image)
     return size_obj
 
+
 def main(argv=None):
     if argv is None:
         argv = sys.argv
@@ -111,7 +121,7 @@ def main(argv=None):
     focal = print_focal(size_obj_focal, 300, 3.5)
     print("EXPECTED 300 => ")
     print_distance(3.5, focal, size_obj_focal)
-    print focal
+    print(focal)
 
     size_obj2 = process_size("../tests/calque/5m.jpg")
     print("EXPECTED 500 => ")
@@ -148,6 +158,7 @@ def main(argv=None):
     size_obj10 = process_size("../tests/calque/1m.jpg")
     print("EXPECTED 100 => ")
     print_distance(3.5, focal, size_obj10)
+
 
 if __name__ == "__main__":
     sys.exit(main())

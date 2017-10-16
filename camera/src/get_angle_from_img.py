@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #######################################################
 # AUTHOR  : Ashkan Kiaie-Sandjie                      #
 # SUMMARY : Contain the logic to compute the angle    #
@@ -27,18 +29,20 @@ def get_angle_from(source_image):
 
     return 0.0
 
+
 def print_distance(real_size, focal, size):
     distance = real_size * focal / size
     print(distance)
     return distance
 
+
 def get_keypoints_image(keypoints, source_image):
     image_keypoints = cv2.drawKeypoints(
-        source_image, keypoints, np.array([]),
-        (0,0,255),
-        cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+        source_image, keypoints,
+        np.array([]), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 
     return image_keypoints
+
 
 def get_keypoints(source_image):
     params = cv2.SimpleBlobDetector_Params()
@@ -55,13 +59,15 @@ def get_keypoints(source_image):
     params.minCircularity = 0.6
     params.minInertiaRatio = 0.6
     params.blobColor = 255
-    detector = cv2.SimpleBlobDetector(params)
+    detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(source_image)
     return keypoints
+
 
 def show_and_wait(image):
     cv2.imshow("output", image)
     cv2.waitKey(0)
+
 
 def process_size(image_path):
     name = image_path
@@ -69,26 +75,27 @@ def process_size(image_path):
     angle = get_angle_from(source_image)
     return angle
 
+
 def main(argv=None):
     if argv is None:
         argv = sys.argv
     angle = process_size("../tests/calque/3m.jpg")
-    print angle
+    print(angle)
 
     angle = process_size("../tests/calque/5m.jpg")
-    print angle
+    print(angle)
 
     angle = process_size("../tests/calque/6m.jpg")
-    print angle
+    print(angle)
 
     angle = process_size("../tests/calque/7m.jpg")
-    print angle
+    print(angle)
 
     angle = process_size("../tests/calque/8m.jpg")
-    print angle
+    print(angle)
 
     angle = process_size("../tests/calque/9m.jpg")
-    print angle
+    print(angle)
 
 
 if __name__ == "__main__":
