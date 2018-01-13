@@ -47,3 +47,8 @@ by triangularisation.
 ## Motor
 
 ## Odometry
+
+The optical odometry sensors monitors the number of turns of each wheel.
+This allows a greater precision for the robot moves and ease the location.
+
+[More on the Odometry](leds/README.md)
