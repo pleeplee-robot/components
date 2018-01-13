@@ -11,15 +11,35 @@ by triangularisation.
 
 A single luminous landmark is made from:
 - 4 RGB LEDs.
-- Plastic support taken from a commercial solar beacons kit.
+- Plastic support taken from a [commercial solar beacons kit](https://www.leroymerlin.fr/v3/p/produits/balise-inox-inspire-e1500701586).
 - An interruptor.
-- A metal square support.
+- A [metal square support](https://www.leroymerlin.fr/v3/p/produits/1-equerre-reglage-acier-zingue-hettich-l-70-mm-e1401288903).
 - An Arduino pro mini.
 - A battery support.
 
 Here is how the different elements are linked:
 
 ![electrical diagram](assets/el-diagram.png)
+
+To build the support:
+
+- Open the commercial beacon:
+
+<img src="assets/build0.jpg" width="350">
+
+- Remove the useless part:
+
+<img src="assets/build1.jpg" width="350">
+
+- Glue it with the metal support:
+
+<img src="assets/build2.jpg" width="350">
+
+- Glue the battery support and the interruptor:
+
+<img src="assets/build3.jpg" width="350">
+
+The circuit is inside the plastic beacon part.
 
 ## Code on the Arduino card
 
@@ -36,7 +56,4 @@ The colors available are:
 
 Depending on the quality of the leds the RGB values for these colors have
 to be adjusted.
-
-## Tutorial in images to build your own beacon
-
 
