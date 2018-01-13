@@ -37,6 +37,13 @@ ot.
 
 ## LEDs
 
+The LEDs are luminous landmarks used as beacon for locating the robot
+by triangularisation.
+
+<img src="leds/assets/led1.jpg" width="400">
+
+[More on the LEDs](leds/README.md)
+
 ## Motor
 
 ## Odometry
