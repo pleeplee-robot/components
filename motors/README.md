@@ -14,6 +14,6 @@ exchange the informations coming from the STM8 to the raspberry pi.
 ## Build instructions
 
 Download the sources and follow the instructions on the [official repository's wiki](https://github.com/arduino/arduino/wiki/building-arduino).
-Complete the Arduino sources with the libraries and flash the motors.ino on the
+Complete the Arduino sources with the libraries and flash the `motors.ino` on the
 main arduino responsible to control the motors.
 

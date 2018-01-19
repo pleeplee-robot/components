@@ -35,6 +35,12 @@ ot.
 
 ## Camera
 
+The camera complements the beacons (leds) in supporting the location.
+The camera takes pictures of the leds and from these pictures the angle of the
+leds on the picture is calculated.
+
+[More on the Camera](camera/README.md)
+
 ## LEDs
 
 The LEDs are luminous landmarks used as beacon for locating the robot
