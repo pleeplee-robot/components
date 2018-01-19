@@ -7,6 +7,7 @@
 
 List<Module*>* modules = nullptr;
 
+// Add all modules
 void setup() {
     Serial.begin(9600);
     Serial.setTimeout(10);
@@ -28,6 +29,7 @@ Module* get_module_by_name(List<Module*>* modules, String& name)
     return nullptr;
 }
 
+// Main loop
 void loop() {
     String str = "";
     while (1)

@@ -46,6 +46,11 @@ by triangularisation.
 
 ## Motor
 
+The robot has 4 motors, each equipped with an odometry sensor which enables us to get the number of turns per wheels.
+The Arduino card controls 4 motors and the servomotor.
+
+[More on the motors](motors/README.md)
+
 ## Odometry
 
 The optical odometry sensors monitors the number of turns of each wheel.
