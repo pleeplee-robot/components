@@ -1,7 +1,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## PleePlee Robot
+# PleePlee Robot
 
 ![logo](https://github.com/pleeplee-robot/location/blob/master/resources/logo-pleeplee.png)
 
